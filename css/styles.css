@@ -363,7 +363,8 @@ section {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0;
+    overflow: hidden;
+    background-color: var(--color-dark); /* Fallback dark background */
 }
 
 .hero-video {
@@ -576,11 +577,32 @@ section {
 }
 
 .map-link {
-    display: inline-block;
-    margin-top: 1.5rem;
+    display: block;
+    margin-top: 1rem;
     color: var(--color-dorado-suave);
     text-decoration: underline;
     font-style: italic;
+    font-size: 0.9rem;
+}
+
+.calendar-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.2rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--color-dorado-suave);
+    color: var(--color-dorado-suave);
+    text-decoration: none;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.calendar-btn:hover {
+    background-color: var(--color-dorado-suave);
+    color: var(--color-white);
 }
 
 /* ====== Gallery ====== */
@@ -797,6 +819,30 @@ section {
     font-size: 1.2rem;
     font-style: italic;
     line-height: 1.8;
+}
+
+.btn-copy {
+    margin-top: 1.5rem;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--color-champana);
+    border: 1px dashed var(--color-dorado-suave);
+    color: var(--color-dorado-suave);
+    cursor: pointer;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-copy:hover {
+    background-color: var(--color-dorado-suave);
+    color: var(--color-white);
+}
+
+.btn-copy.copied {
+    background-color: #4CAF50;
+    border-color: #4CAF50;
+    color: white;
 }
 
 .final-section {
