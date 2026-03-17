@@ -12,6 +12,20 @@ document.addEventListener("DOMContentLoaded", () => {
         envelopeContainer.addEventListener('click', () => {
             if (!envelope.classList.contains('open')) {
                 envelope.classList.add('open');
+                
+                // Force video play after interaction (bypass autoplay policies)
+                const heroVideo = document.getElementById('hero-video');
+                if (heroVideo) {
+                    console.log("Interaction detected, forcing video play...");
+                    heroVideo.muted = true; // Ensure it's muted
+                    heroVideo.play().then(() => {
+                        console.log("Video playing successfully after interaction!");
+                    }).catch(error => {
+                        console.error("Video play failed after interaction, force-reloading:", error);
+                        heroVideo.load();
+                        heroVideo.play();
+                    });
+                }
 
                 // Hide envelope screen after animation finishes
                 setTimeout(() => {
@@ -22,6 +36,25 @@ document.addEventListener("DOMContentLoaded", () => {
                     }, 1500); // fade out duration
                 }, 2500); // wait for letter sliding up
             }
+        });
+    }
+
+
+    // --- Copy Bank Account ---
+    const copyBtn = document.getElementById('copy-account');
+    if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+            const accNum = document.getElementById('account-number').innerText;
+            navigator.clipboard.writeText(accNum).then(() => {
+                const originalContent = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<span>✅</span> Copiado';
+                copyBtn.classList.add('copied');
+                
+                setTimeout(() => {
+                    copyBtn.innerHTML = originalContent;
+                    copyBtn.classList.remove('copied');
+                }, 2500);
+            });
         });
     }
 
@@ -135,22 +168,43 @@ document.addEventListener("DOMContentLoaded", () => {
     if (rsvpForm) {
         rsvpForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            // In a real scenario, this would send an AJAX request
             const btn = rsvpForm.querySelector('button[type="submit"]');
-            const originalText = btn.innerText;
+            const originalText = btn.innerHTML;
 
-            btn.innerText = "¡Enviando...";
+            btn.innerHTML = "<span>⌛</span> Enviando...";
             btn.disabled = true;
 
+            // Simulate submission
             setTimeout(() => {
-                btn.innerText = "¡Confirmado Ocultar!";
-                // Reset form
+                btn.innerHTML = "<span>✨</span> ¡Confirmado!";
+                btn.style.backgroundColor = "#4CAF50";
+                btn.style.borderColor = "#4CAF50";
+
+                // Success effect
+                const canvas = document.createElement('div');
+                canvas.innerHTML = "🎉";
+                canvas.style.position = "fixed";
+                canvas.style.bottom = "10%";
+                canvas.style.left = "50%";
+                canvas.style.transform = "translateX(-50%)";
+                canvas.style.fontSize = "5rem";
+                canvas.style.zIndex = "9999";
+                canvas.style.transition = "all 1s ease";
+                document.body.appendChild(canvas);
+                
+                setTimeout(() => {
+                    canvas.style.opacity = "0";
+                    canvas.style.transform = "translateX(-50%) translateY(-100px) scale(2)";
+                    setTimeout(() => canvas.remove(), 1000);
+                }, 100);
+
                 rsvpForm.reset();
                 setTimeout(() => {
-                    btn.innerText = originalText;
+                    btn.innerHTML = originalText;
+                    btn.style.backgroundColor = "";
+                    btn.style.borderColor = "";
                     btn.disabled = false;
-                    alert("¡Gracias por confirmar tu asistencia a nuestra boda!");
-                }, 2000);
+                }, 3000);
             }, 1500);
         });
     }

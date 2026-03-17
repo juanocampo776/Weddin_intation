@@ -17,7 +17,6 @@
 
     <link rel="stylesheet" href="css/styles.css">
 </head>
-
 <body>
 
     <!-- Envelope Screen -->
@@ -44,9 +43,9 @@
     <!-- Hero Section -->
     <header class="hero">
         <!-- Replaced background image with the local video -->
-        <video class="hero-video" autoplay muted loop playsinline
-            poster="data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='800' style='background-color:%23E8CFC5'%3E%3C/svg%3E">
-            <source src="video boda.mp4" type="video/mp4">
+        <video id="hero-video" class="hero-video" autoplay muted loop playsinline 
+            poster="assets/images/IMG_4891.JPG.jpeg">
+            <source src="assets/videos/video_preboda.mp4" type="video/mp4">
             Tu navegador no soporta videos HTML5.
         </video>
         <div class="hero-overlay"></div>
@@ -172,18 +171,35 @@
             <div class="gallery-grid">
                 <!-- Using JPGs provided by the user -->
                 <div class="gallery-item fade-in">
-                    <img class="placeholder-img"
-                        src="Qué bonito es caminar la vida con tu persona favorita al lado. ✨.jpg" alt="Foto 1">
+                    <img class="placeholder-img" src="assets/images/IMG_4397.JPG.jpeg" alt="Foto 1">
                     <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
                 </div>
                 <div class="gallery-item fade-in" style="transition-delay: 0.1s;">
-                    <img class="placeholder-img" src="Si a todo con ella! @saracastro.b.jpg" alt="Foto 2">
+                    <img class="placeholder-img" src="assets/images/IMG_4484.JPG.jpeg" alt="Foto 2">
                     <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
                 </div>
                 <div class="gallery-item fade-in" style="transition-delay: 0.2s;">
-                    <img class="placeholder-img"
-                        src="Son momentos que tatúan mi alma, recuerdos que me hacen millonario, segundos que el dinero no pu.jpg"
-                        alt="Foto 3">
+                    <img class="placeholder-img" src="assets/images/IMG_4492.jpg.jpeg" alt="Foto 3">
+                    <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.3s;">
+                    <img class="placeholder-img" src="assets/images/IMG_4538.JPG.jpeg" alt="Foto 4">
+                    <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.4s;">
+                    <img class="placeholder-img" src="assets/images/IMG_4571.JPG.jpeg" alt="Foto 5">
+                    <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.5s;">
+                    <img class="placeholder-img" src="assets/images/IMG_4573.JPG.jpeg" alt="Foto 6">
+                    <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.6s;">
+                    <img class="placeholder-img" src="assets/images/IMG_4810.JPG.jpeg" alt="Foto 7">
+                    <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
+                </div>
+                <div class="gallery-item fade-in" style="transition-delay: 0.7s;">
+                    <img class="placeholder-img" src="assets/images/IMG_4891.JPG.jpeg" alt="Foto 8">
                     <div class="gallery-overlay"><span style="color:white; font-size:2rem;">+</span></div>
                 </div>
             </div>
@@ -228,8 +244,13 @@
             <p class="gifts-text">"Tu presencia es el mejor regalo para nosotros. <br>Sin embargo, si deseas bendecirnos
                 con un detalle, <br>puedes contribuir a nuestro fondo de luna de miel."</p>
             <br>
-            <p><strong>Cuenta Bancaria:</strong><br>Banco XYZ - Cuenta de Ahorros 123456789<br>A nombre de Carlos Pérez
+            <p><strong>Cuenta Bancaria:</strong><br>
+                <span id="account-number">123456789</span> (Banco XYZ - Ahorros)<br>
+                A nombre de Carlos Pérez
             </p>
+            <button id="copy-account" class="btn-copy">
+                <span class="copy-icon">📋</span> <span class="copy-text">Copiar número</span>
+            </button>
         </div>
     </section>
 
