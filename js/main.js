@@ -13,20 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!envelope.classList.contains('open')) {
                 envelope.classList.add('open');
                 
-                // Force video play after interaction (bypass autoplay policies)
-                const heroVideo = document.getElementById('hero-video');
-                if (heroVideo) {
-                    console.log("Interaction detected, forcing video play...");
-                    heroVideo.muted = true; // Ensure it's muted
-                    heroVideo.play().then(() => {
-                        console.log("Video playing successfully after interaction!");
-                    }).catch(error => {
-                        console.error("Video play failed after interaction, force-reloading:", error);
-                        heroVideo.load();
-                        heroVideo.play();
-                    });
-                }
-
                 // Hide envelope screen after animation finishes
                 setTimeout(() => {
                     envelopeScreen.style.opacity = '0';

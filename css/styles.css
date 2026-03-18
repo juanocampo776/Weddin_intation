@@ -365,16 +365,10 @@ section {
     text-align: center;
     overflow: hidden;
     background-color: var(--color-dark); /* Fallback dark background */
-}
-
-.hero-video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 1;
+    background-image: url('../assets/images/IMG_4891.JPG.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-overlay {
